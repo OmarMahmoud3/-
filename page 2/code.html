@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta name="theme-color" content="#121211"/>
+  <title>منيو مطعم أبو يونس السوري | شاورما ومشويات</title>
+  <meta name="description" content="منيو مطعم أبو يونس السوري في فيصل - تصفح أسعار الشاورما، الفتات، الماريا، الفراخ المشوية، وبوكسات التوفير واطلب دليفري."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg-canvas: #121211;
+      --bg-surface: #1a1918;
+      --bg-surface-elevated: #242321;
+      --accent-ember: #e8590c;
+      --accent-ember-hover: #d9480f;
+      --accent-spicy: #c92a2a;
+      --accent-whatsapp: #1ea855;
+      --accent-whatsapp-hover: #198754;
+      --text-cream: #faf6f0;
+      --text-muted: #9e968c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.16);
+      --font-arabic: 'Cairo', system-ui, sans-serif;
+      --font-number: 'Outfit', 'Cairo', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-cream);
+      font-family: var(--font-arabic);
+      margin: 0;
+      padding: 0;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100dvh;
+      background-color: var(--bg-canvas);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    }
+
+    @media (min-width: 768px) {
+      .app-shell {
+        border-inline: 1px solid var(--border-subtle);
+      }
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Header */
+    .app-header {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+      height: 64px;
+      background-color: rgba(18, 18, 17, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 50;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--accent-ember);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-cream);
+      line-height: 1.2;
+    }
+
+    .brand-branch {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .brand-branch .material-symbols-outlined {
+      font-size: 13px;
+      color: var(--accent-ember);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-cream);
+      text-decoration: none;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:active {
+      transform: scale(0.92);
+      background-color: var(--bg-surface-elevated);
+    }
+
+    .icon-btn.call-btn {
+      color: var(--accent-ember);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-color: var(--accent-ember);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-number);
+      border: 2px solid var(--bg-canvas);
+    }
+
+    /* Main Container */
+    main {
+      padding-top: 64px;
+      padding-bottom: 96px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Search Box */
+    .search-container {
+      padding: 12px 16px 6px 16px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      color: #756e66;
+      font-size: 20px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 46px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0 42px 0 38px;
+      color: var(--text-cream);
+      font-size: 14px;
+      font-family: var(--font-arabic);
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-ember);
+      background-color: var(--bg-surface-elevated);
+    }
+
+    .search-input::placeholder {
+      color: #756e66;
+    }
+
+    .search-clear {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .search-clear.show {
+      display: flex;
+    }
+
+    /* Sticky Categories Nav */
+    .category-nav-wrap {
+      position: sticky;
+      top: 64px;
+      background-color: rgba(18, 18, 17, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 40;
+    }
+
+    .category-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      min-height: 40px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cat-pill.active {
+      background-color: var(--accent-ember);
+      color: #fff;
+      border-color: var(--accent-ember);
+    }
+
+    /* Spotlight Deal Bento */
+    .spotlight-deal {
+      margin: 12px 16px 16px 16px;
+      background: linear-gradient(145deg, #242220 0%, #1a1918 100%);
+      border: 1px solid rgba(232, 89, 12, 0.25);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .deal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .deal-badge {
+      background-color: var(--accent-ember);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .deal-tag {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 9999px;
+    }
+
+    .deal-body {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .deal-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .deal-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-cream);
+    }
+
+    .deal-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .deal-pricing {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .deal-price {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent-ember);
+      font-family: var(--font-number);
+    }
+
+    .deal-currency {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-ember);
+    }
+
+    .deal-orig-price {
+      font-size: 12px;
+      color: #756e66;
+      text-decoration: line-through;
+      font-family: var(--font-number);
+    }
+
+    .deal-image {
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .deal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .deal-btn {
+      width: 100%;
+      height: 42px;
+      background-color: var(--accent-ember);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .deal-btn:active {
+      transform: scale(0.98);
+      background-color: var(--accent-ember-hover);
+    }
+
+    /* Section Head */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 14px 16px 10px 16px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-cream);
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Food List */
+    .food-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 16px;
+    }
+
+    .food-card-horizontal {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      gap: 12px;
+      transition: border-color 0.2s ease;
+    }
+
+    .food-card-horizontal:hover {
+      border-color: var(--border-hover);
+    }
+
+    .card-image-wrap {
+      width: 95px;
+      height: 95px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      background-color: var(--bg-surface-elevated);
+    }
+
+    .card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background-color: rgba(18, 18, 17, 0.88);
+      border: 1px solid var(--accent-ember);
+      color: var(--accent-ember);
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .card-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-cream);
+      line-height: 1.25;
+    }
+
+    .card-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-top: 3px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 4px;
+    }
+
+    .card-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .card-price {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--accent-ember);
+      font-family: var(--font-number);
+    }
+
+    .card-currency {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* Stepper */
+    .stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 2px;
+    }
+
+    .stepper-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background-color: var(--bg-surface);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-cream);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .stepper-btn.add-main {
+      background-color: var(--accent-ember);
+      color: #fff;
+    }
+
+    .stepper-val {
+      min-width: 22px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: var(--font-number);
+      color: var(--accent-ember);
+    }
+
+    /* Empty state */
+    .empty-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 16px;
+      gap: 12px;
+    }
+
+    .empty-state.show {
+      display: flex;
+    }
+
+    .empty-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 9999px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #756e66;
+    }
+
+    /* Floating Cart Bar */
+    .floating-cart-bar {
+      position: fixed;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 488px;
+      background-color: rgba(36, 34, 32, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--accent-ember);
+      border-radius: 16px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      z-index: 45;
+    }
+
+    .floating-cart-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-icon-bubble {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background-color: var(--accent-ember);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-cart-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .floating-cart-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-cream);
+      line-height: 1.2;
+    }
+
+    .floating-cart-price {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--accent-ember);
+      font-family: var(--font-number);
+    }
+
+    .floating-cart-cta {
+      height: 38px;
+      padding: 0 14px;
+      background-color: var(--accent-whatsapp);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .floating-cart-cta:active {
+      transform: scale(0.96);
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+      height: 68px;
+      background-color: rgba(22, 21, 20, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+      z-index: 50;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      min-width: 64px;
+      height: 48px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-item .material-symbols-outlined {
+      font-size: 22px;
+    }
+
+    .nav-item.active {
+      color: var(--accent-ember);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-block">
+        <div class="brand-avatar">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB496m5YYYWwcqLL8Si5MQ6Or_MHYDR6in_va90gVH-BpkU8OrEsNl2atzu4MCz87UKjB_9ZjjtZdNQ6F4F_FtCu8CYyKXONIF-gdFkpwjgggDkj6HVf49YzZaxp_BdxquSlwO-xYQUXHSTw6gEbN7PdZYKSnuN1reaxfkQQdd32NUm5KQ6lkmlQ1o_3Gh1jBbnhEAZ4Y8PNOAssqGbm3lNXQstobxyF2pDhtG9oec" alt="أبو يونس السوري"/>
+        </div>
+        <div class="brand-meta">
+          <span class="brand-title">أبو يونس السوري</span>
+          <span class="brand-branch">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>فيصل - 50 شارع العشرين ناصية الأنصاري</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a href="tel:01154857201" class="icon-btn call-btn" aria-label="الاتصال بالفرع">
+          <span class="material-symbols-outlined">call</span>
+        </a>
+        <a href="#" class="icon-btn" aria-label="السلة" onclick="triggerWhatsAppCart(); return false;">
+          <span class="material-symbols-outlined">shopping_bag</span>
+          <span class="cart-badge" id="cartHeaderBadge">2</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main View -->
+    <main>
+      <!-- Search Input -->
+      <section class="search-container">
+        <div class="search-box">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input
+            type="search"
+            class="search-input"
+            id="searchInput"
+            placeholder="ابحث في منيو أبو يونس (شاورما، بوكس، فتة، ماريا...)"
+          />
+          <button class="search-clear" id="searchClear" aria-label="مسح">
+            <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Sticky Category Bar -->
+      <nav class="category-nav-wrap">
+        <div class="category-nav no-scrollbar" id="categoryNav">
+          <button class="cat-pill active" data-cat="all">الكل</button>
+          <button class="cat-pill" data-cat="shawarma">🌯 سندوتشات الشاورما</button>
+          <button class="cat-pill" data-cat="shawarma-meals">🍽️ وجبات عربي</button>
+          <button class="cat-pill" data-cat="fatta">🍚 الفتات الشامية</button>
+          <button class="cat-pill" data-cat="maria">🫓 الماريا</button>
+          <button class="cat-pill" data-cat="chicken">🍗 مشويات وبروستد</button>
+          <button class="cat-pill" data-cat="boxes">📦 بوكسات اللمة</button>
+          <button class="cat-pill" data-cat="sides">🍟 مقبلات وبرجر</button>
+        </div>
+      </nav>
+
+      <!-- Spotlight Daily Deal -->
+      <section class="spotlight-deal" id="spotlightDeal">
+        <div class="deal-header">
+          <span class="deal-badge">
+            <span class="material-symbols-outlined" style="font-size: 14px;">local_fire_department</span>
+            <span>أقوى عرض اليوم</span>
+          </span>
+          <span class="deal-tag">توفير عائلي</span>
+        </div>
+        <div class="deal-body">
+          <div class="deal-info">
+            <h2 class="deal-title">بوكس أبو يونس العائلي</h2>
+            <p class="deal-desc">1 فراخ سوري + 1 لحمة سوري + 1 كرسبي سوري + بطاطس حجم عائلي + عيش توست محمص + تومية + مخلل سوري.</p>
+            <div class="deal-pricing">
+              <span class="deal-price">300</span>
+              <span class="deal-currency">ج.م</span>
+              <span class="deal-orig-price">350 ج.م</span>
+            </div>
+          </div>
+          <div class="deal-image">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="بوكس أبو يونس العائلي"/>
+          </div>
+        </div>
+        <button class="deal-btn" onclick="addCustomItem('بوكس أبو يونس العائلي', 300)">
+          <span class="material-symbols-outlined" style="font-size: 18px;">add_shopping_cart</span>
+          <span>أضف بوكس أبو يونس للسلة (300 ج.م)</span>
+        </button>
+      </section>
+
+      <!-- Meals Header -->
+      <div class="section-head">
+        <h3 class="section-title">الأصناف والوجبات</h3>
+        <span class="section-sub" id="itemsCount">عرض جميع الأصناف</span>
+      </div>
+
+      <!-- Food List -->
+      <div class="food-list" id="foodContainer">
+        <!-- Item 1: Shawarma Sarookh -->
+        <article class="food-card-horizontal" data-cat="shawarma">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1637806930600-37fa8892069d?auto=format&fit=crop&w=600&q=80" alt="شاورما صاروخ XL فراخ"/>
+            <span class="card-badge">صاروخ XL 🔥</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">شاورما صاروخ XL فراخ</h4>
+              <p class="card-desc">سندوتش صاروخ عملاق في عيش صاج محمص عالفحم، متبل بالخلطة الشامية مع تومية ومخلل (لحمة: 85 ج).</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">75</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="101" data-name="شاورما صاروخ XL فراخ" data-price="75"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2: Shawarma M -->
+        <article class="food-card-horizontal" data-cat="shawarma">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80" alt="شاورما سوري M فراخ"/>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">شاورما سوري M فراخ</h4>
+              <p class="card-desc">شاورما فراخ متبلة على السيخ السوري في خبز صاج ساخن مع تومية وخيار مخلل (لحمة: 55 ج).</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">45</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="102" data-name="شاورما سوري M فراخ" data-price="45"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3: Arabic Double Meal -->
+        <article class="food-card-horizontal" data-cat="shawarma-meals">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="وجبة شاورما عربي دبل"/>
+            <span class="card-badge">وجبة دبل</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">وجبة شاورما عربي دبل</h4>
+              <p class="card-desc">سندوتش دبل مقطع شرائح + بطاطس + تومية + مخلل سوري (فراخ 150 / لحمة 165 ج).</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">150</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="201" data-name="وجبة شاورما عربي دبل" data-price="150"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4: Arabic Family Meal -->
+        <article class="food-card-horizontal" data-cat="shawarma-meals">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="وجبة شاورما عربي عائلي"/>
+            <span class="card-badge">سرفيس عائلي</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">وجبة شاورما عربي عائلي</h4>
+              <p class="card-desc">سرفيس شاورما عائلي مقطع مع بطاطس وتوميات ومخلل (فراخ 310 / لحمة 320 / ميكس 335 ج).</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">310</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="202" data-name="وجبة شاورما عربي عائلي" data-price="310"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5: Fatta Abu Younis Special -->
+        <article class="food-card-horizontal" data-cat="fatta">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80" alt="فتة أبو يونس الخاصة"/>
+            <span class="card-badge">ميكس مميز</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">فتة أبو يونس الخاصة</h4>
+              <p class="card-desc">شاورما لحمة + شاورما فراخ + دجاج كرسبي مقرمش فوق الأرز البسمتي بالزعفران والعيش المحمص.</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">110</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="301" data-name="فتة أبو يونس الخاصة" data-price="110"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6: Maria Mozzarella -->
+        <article class="food-card-horizontal" data-cat="maria">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="ماريا دجاج موتزاريلا"/>
+            <span class="card-badge">جبنة سايحة 🧀</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">ماريا دجاج موتزاريلا</h4>
+              <p class="card-desc">وجبة ماريا شاورما دجاج مع جبنة موتزاريلا ذائبة ومحمصة عالفحم مع بطاطس وتومية ومخلل.</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">100</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="401" data-name="ماريا دجاج موتزاريلا" data-price="100"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 7: Whole Grilled Chicken -->
+        <article class="food-card-horizontal" data-cat="chicken">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="فرخة مشوية على الفحم كاملة"/>
+            <span class="card-badge">مشوي عالفحم</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">فرخة مشوية فحم كاملة</h4>
+              <p class="card-desc">تقدم مع أرز بسمتي + بطاطس + عيش + تومية + مخلل سوري مشكل (سادة: 280 ج).</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">310</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="501" data-name="فرخة مشوية فحم كاملة" data-price="310"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 8: Box El-Twins -->
+        <article class="food-card-horizontal" data-cat="boxes">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="بوكس التوينز"/>
+            <span class="card-badge">توفير توينز</span>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">بوكس التوينز (Twins)</h4>
+              <p class="card-desc">1 سوري فراخ + 1 سوري لحمة + 2 قطعة استربس كرسبي + بطاطس وتومية وعيش.</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">180</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="601" data-name="بوكس التوينز" data-price="180"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 9: Syrian Toum -->
+        <article class="food-card-horizontal" data-cat="sides">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="تومية سوري أصلية"/>
+          </div>
+          <div class="card-content">
+            <div>
+              <h4 class="card-title">تومية سوري أصلية</h4>
+              <p class="card-desc">تومية شامية بيضاء كريمية مخفوقة على أصولها (صغير 7 / كبير 12 / سبايسي 14 ج).</p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-price-wrap">
+                <span class="card-price">12</span>
+                <span class="card-currency">ج.م</span>
+              </div>
+              <div class="stepper-wrap" data-id="701" data-name="تومية سوري أصلية" data-price="12"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">
+          <span class="material-symbols-outlined" style="font-size: 32px;">search_off</span>
+        </div>
+        <h4 style="font-size: 16px; font-weight: 800;">ملقناش وجبة بالاسم ده!</h4>
+        <p style="font-size: 12px; color: var(--text-muted);">جرب تبحث بكلمات تانية زي (شاورما، بوكس، فتة، ماريا)</p>
+        <button class="deal-btn" style="width: auto; padding: 0 20px; height: 38px;" onclick="resetSearch()">
+          عرض المنيو كامل
+        </button>
+      </div>
+    </main>
+
+    <!-- Floating Quick Cart Summary -->
+    <aside class="floating-cart-bar" id="floatingCart">
+      <div class="floating-cart-left">
+        <div class="cart-icon-bubble">
+          <span class="material-symbols-outlined">shopping_bag</span>
+        </div>
+        <div class="floating-cart-details">
+          <span class="floating-cart-title" id="floatingCartCount">2 أصناف مختارة</span>
+          <span class="floating-cart-price" id="floatingCartTotal">225 ج.م</span>
+        </div>
+      </div>
+      <a href="#" class="floating-cart-cta" onclick="triggerWhatsAppCart(); return false;">
+        <span>تأكيد بالواتساب</span>
+        <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+      </a>
+    </aside>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../page1/code.html" class="nav-item">
+        <span class="material-symbols-outlined">home</span>
+        <span>الرئيسية</span>
+      </a>
+      <a href="code.html" class="nav-item active">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+        <span>المنيو</span>
+      </a>
+      <a href="#" class="nav-item" onclick="triggerWhatsAppCart(); return false;">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span>السلة</span>
+      </a>
+      <a href="../page1/code.html#branch" class="nav-item">
+        <span class="material-symbols-outlined">storefront</span>
+        <span>الفروع</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const cart = {
+      101: 1, // 1x Sarookh XL (75)
+      201: 1  // 1x Double Arabic (150)
+    };
+
+    const itemDetails = {
+      101: { name: 'شاورما صاروخ XL فراخ', price: 75 },
+      102: { name: 'شاورما سوري M فراخ', price: 45 },
+      201: { name: 'وجبة شاورما عربي دبل', price: 150 },
+      202: { name: 'وجبة شاورما عربي عائلي', price: 310 },
+      301: { name: 'فتة أبو يونس الخاصة', price: 110 },
+      401: { name: 'ماريا دجاج موتزاريلا', price: 100 },
+      501: { name: 'فرخة مشوية فحم كاملة', price: 310 },
+      601: { name: 'بوكس التوينز', price: 180 },
+      701: { name: 'تومية سوري أصلية', price: 12 },
+      999: { name: 'بوكس أبو يونس العائلي', price: 300 }
+    };
+
+    function renderSteppers() {
+      document.querySelectorAll('.stepper-wrap').forEach(wrap => {
+        const id = wrap.getAttribute('data-id');
+        const qty = cart[id] || 0;
+
+        if (qty > 0) {
+          wrap.innerHTML = `
+            <div class="stepper">
+              <button class="stepper-btn" onclick="updateQty(${id}, -1)">
+                <span class="material-symbols-outlined" style="font-size: 16px;">${qty === 1 ? 'delete' : 'remove'}</span>
+              </button>
+              <span class="stepper-val">${qty}</span>
+              <button class="stepper-btn add-main" onclick="updateQty(${id}, 1)">
+                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+              </button>
+            </div>
+          `;
+        } else {
+          wrap.innerHTML = `
+            <button class="add-btn" onclick="updateQty(${id}, 1)">
+              <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+            </button>
+          `;
+        }
+      });
+
+      updateCartSummary();
+    }
+
+    function updateQty(id, delta) {
+      const cur = cart[id] || 0;
+      const next = cur + delta;
+      if (next <= 0) {
+        delete cart[id];
+      } else {
+        cart[id] = next;
+      }
+      renderSteppers();
+    }
+
+    function addCustomItem(name, price) {
+      cart[999] = (cart[999] || 0) + 1;
+      renderSteppers();
+    }
+
+    function updateCartSummary() {
+      let totalCount = 0;
+      let totalPrice = 0;
+
+      for (const [id, qty] of Object.entries(cart)) {
+        totalCount += qty;
+        totalPrice += (itemDetails[id]?.price || 0) * qty;
+      }
+
+      const badge = document.getElementById('cartHeaderBadge');
+      const floatBar = document.getElementById('floatingCart');
+      const floatCount = document.getElementById('floatingCartCount');
+      const floatTotal = document.getElementById('floatingCartTotal');
+
+      badge.textContent = totalCount;
+
+      if (totalCount > 0) {
+        floatBar.style.display = 'flex';
+        floatCount.textContent = totalCount + ' أصناف مختارة';
+        floatTotal.textContent = totalPrice + ' ج.م';
+      } else {
+        floatBar.style.display = 'none';
+      }
+    }
+
+    function triggerWhatsAppCart() {
+      let message = '*طلب أوردر من مطعم أبو يونس السوري* 🌯🔥\n\n';
+      let total = 0;
+
+      for (const [id, qty] of Object.entries(cart)) {
+        const item = itemDetails[id];
+        if (item) {
+          message += `• ${qty}x ${item.name} = *${item.price * qty} ج.م*\n`;
+          total += item.price * qty;
+        }
+      }
+
+      message += `\n*الإجمالي:* *${total} ج.م* (+ مصاريف التوصيل)\nالعنوان: فيصل\nبرجاء التأكيد!`;
+      window.open('https://wa.me/201154857201?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    // Category Filter & Search
+    let currentCat = 'all';
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const catPills = document.querySelectorAll('.cat-pill');
+    const cards = document.querySelectorAll('.food-card-horizontal');
+    const emptyState = document.getElementById('emptyState');
+    const itemsCount = document.getElementById('itemsCount');
+    const spotlightDeal = document.getElementById('spotlightDeal');
+
+    function filterMenu() {
+      const q = (searchInput.value || '').trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        const text = card.textContent.toLowerCase();
+
+        const matchCat = (currentCat === 'all' || cat === currentCat);
+        const matchSearch = (!q || text.includes(q));
+
+        if (matchCat && matchSearch) {
+          card.style.display = 'flex';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Show/hide spotlight deal
+      if (spotlightDeal) {
+        spotlightDeal.style.display = (currentCat === 'all' || currentCat === 'boxes') && !q ? 'flex' : 'none';
+      }
+
+      if (visible === 0) {
+        emptyState.classList.add('show');
+        itemsCount.textContent = '0 صنف';
+      } else {
+        emptyState.classList.remove('show');
+        itemsCount.textContent = visible + ' صنف متوفر';
+      }
+
+      searchClear.classList.toggle('show', !!q);
+    }
+
+    catPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        catPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentCat = pill.getAttribute('data-cat');
+        filterMenu();
+      });
+    });
+
+    searchInput.addEventListener('input', filterMenu);
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      filterMenu();
+      searchInput.focus();
+    });
+
+    function resetSearch() {
+      searchInput.value = '';
+      currentCat = 'all';
+      catPills.forEach((p, idx) => p.classList.toggle('active', idx === 0));
+      filterMenu();
+    }
+
+    // Initialize
+    renderSteppers();
+  </script>
+</body>
+</html>
